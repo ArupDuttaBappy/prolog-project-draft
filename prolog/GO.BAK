@@ -1,0 +1,5 @@
+domains
+predicates
+    go
+clauses
+    go:-write("bappy").

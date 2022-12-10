@@ -1,0 +1,160 @@
+domains
+    problem,indication=symbol
+	patient=string
+predicates
+    checkup(problem)
+	symptom(indication)
+	response(char)
+	hi
+clauses
+    hi :- 
+	 write("Hello, welcome. What's your name?"),nl,
+	 readln(User),
+	 checkup(Problem),
+	 write("Dear ",User,", you're probably facing ",Problem,"."),nl.
+	
+	hi:-
+     write("I cannot decide what's your problem properly because of lack of data"),nl.
+	 
+	symptom(tired_worn):-
+        write("Do you feel tired or worn out all the time?(y/n)"),
+        response(Reply),
+        Reply='y'.
+	symptom(rest_sleep):-
+        write("Do you still feel fatigue after some rest or sleep?(y/n)"),
+        response(Reply),
+        Reply='y'.
+	symptom(focus):-
+        write("Do you face problem focusing more than a minute on a work?(y/n)"),
+        response(Reply),
+        Reply='y'.
+	symptom(first_year):-
+        write("Have you gone through cancer treatment recently?(y/n)"),
+        response(Reply),
+        Reply='y'.
+	symptom(bone_marrow):-
+        write("Have you had bone marrow transplant during treatment?(y/n)"),
+        response(Reply),
+        Reply='y'.
+	symptom(scars):-
+        write("Do you have any scars from cancer surgery?(y/n)"),
+        response(Reply),
+        Reply='y'.
+	symptom(sensitivity):-
+        write("Do you have sensitive skin where you received radiation?(y/n)"),
+        response(Reply),
+        Reply='y'.
+	symptom(numbness):-
+        write("Do you feel pain or numbness in the hands and feet?(y/n)"),
+        response(Reply),
+        Reply='y'.
+	symptom(missing_limb):-
+        write("Do you have pain in a missing limb or breast?(y/n)"),
+        response(Reply),
+        Reply='y'.
+	symptom(stop_work):-
+        write("Does the pain stop you from working?(y/n)"),
+        response(Reply),
+        Reply='y'.
+	symptom(swollen):-
+        write("Is your arm or leg painful or swollen?(y/n)"),
+        response(Reply),
+        Reply='y'.
+	symptom(swollen_part):-
+        write("Do you have any swollen part in your body?(y/n)"),
+        response(Reply),
+        Reply='y'.
+	symptom(radiate):-
+        write("Have you had radiation therapy during treatment?(y/n)"),
+        response(Reply),
+        Reply='y'.
+	symptom(lymph_node):-
+        write("Had your underarm lymph nodes removed?(y/n)"),
+        response(Reply),
+        Reply='y'.
+	symptom(teeth_gum):-
+        write("Do you have problems with your teeth and gums?(y/n)"),
+        response(Reply),
+        Reply='y'.
+	symptom(dry):-
+        write("Do you have dry mouth all the time?(y/n)"),
+        response(Reply),
+        Reply='y'.
+	symptom(cavity):-
+        write("Do your teeth have cavities and pain in them?(y/n)"),
+        response(Reply),
+        Reply='y'.
+	symptom(taste_sense):-
+        write("Do you feel loss or change in sense of taste?(y/n)"),
+        response(Reply),
+        Reply='y'.
+	symptom(head_neck):-
+        write("Have you had radiation therapy on head and neck?(y/n)"),
+        response(Reply),
+        Reply='y'.
+	symptom(bone_trans):-
+        write("Have you had bone marrow transplant during cancer treatment?(y/n)"),
+        response(Reply),
+        Reply='y'.
+	symptom(lose_strength):-
+        write("Are you feeling less strength in you day-by-day?(y/n)"),
+        response(Reply),
+        Reply='y'.
+	symptom(eat_desire):-
+        write("Do you feel less desire in eating than before?(y/n)"),
+        response(Reply),
+        Reply='y'.
+	symptom(less_active):-
+        write(Do you feel less active in workspace?(y/n)""),
+        response(Reply),
+        Reply='y'.
+	symptom(lose_muscle):-
+        write("Do you feel lose in muscle?(y/n)"),
+        response(Reply),
+        Reply='y'.
+	symptom(gain_fat):-
+        write("Are you gaining fat tissue day-by-day?(y/n)"),
+        response(Reply),
+        Reply='y'.
+		
+	 
+	checkup(fatigue):-
+    symptom(tired_worn),
+    symptom(rest_sleep),
+    symptom(focus),
+    symptom(first_year) or
+    symptom(bone_marrow).
+	
+	checkup(Pain):-
+    symptom(scars),
+    symptom(sensitivity),
+    symptom(numbness),
+    symptom(stop_work) or
+	symptom(missing_limb).
+	
+	checkup(Lymphedema):-
+    symptom(swollen),
+    symptom(swollen_part),
+    symptom(radiate) or
+    symptom(lymph_node).
+	
+	checkup(Mouth and Teeth Problems):-
+    symptom(teeth_gum),
+    symptom(dry),
+    symptom(cavity),
+    symptom(taste_sense) or
+	symptom(head_neck) or
+    symptom(bone_trans)
+	
+	checkup(Weight Loss):-
+    symptom(lose_strength),
+    symptom(eat_desire),
+    symptom(less_active)
+	
+	checkup(Weight Gain):-
+    symptom(lose_muscle),
+    symptom(gain_fat)
+	
+	response(Reply):-
+    readchar(Reply),
+    write(Reply),nl.
